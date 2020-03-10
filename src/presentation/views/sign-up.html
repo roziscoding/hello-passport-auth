@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <script defer src="signup.js"></script>
+  <style>
+    #formContainer {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .formItem {
+      padding: 10px;
+    }
+
+    .formItem>label {
+      color: #797979;
+    }
+
+    .formItem>input,
+    .formItem>input:focus {
+      border-radius: 5px;
+      border: 1px solid #adadad;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="signupForm">
+    <input type="hidden" name="externalIdSource" id="externalIdSource">
+    <input type="hidden" name="externalId" id="externalId" />
+    <div class="formItem">
+      <label for="name">Name:</label><br>
+      <input type="text" name="name" id="name" />
+    </div>
+    <div class="formItem">
+      <label for="username">Username:</label><br>
+      <input type="text" name="username" id="username" />
+    </div>
+    <div class="formItem">
+      <label for="password">Password:</label><br>
+      <input type="password" name="password" id="password" />
+    </div>
+    <div class="formItem">
+      <label for="confirm">Confirm Password:</label><br>
+      <input type="password" name="confirm" id="confirm" />
+    </div>
+    <div class="formItem">
+      <button id="submit">Sign-up!</button>
+    </div>
+  </form>
+</body>
+
+</html>

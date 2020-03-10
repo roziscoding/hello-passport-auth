@@ -1,0 +1,50 @@
+{
+  "name": "Passport authentication sample",
+  "description": "Simple app to demonstrate authenticating with passport",
+  "repository": "https://github.com/rjmunhoz/hello-passport-auth",
+  "keywords": [
+    "node",
+    "telegram",
+    "chatbot",
+    "auth",
+    "passport"
+  ],
+  "env": {
+    "AUTH_FACEBOOK_CLIENTID": {
+      "description": "ClientID for your Facebook app",
+      "required": true
+    },
+    "AUTH_FACEBOOK_CLIENTSECRET": {
+      "description": "ClientSecret for yout Facebook app",
+      "required": true
+    },
+    "AUTH_FACEBOOK_CALLBACKURLBASE": {
+      "description": "The base for facebook's callback URL",
+      "required": true,
+      "value": "https://your-app-name.herokuapp.com"
+    },
+    "JWT_SECRET": {
+      "description": "JWT Secret, for token signing",
+      "required": true
+    },
+    "JWT_AUDIENCE": {
+      "description": "JWT Audience, for token validation",
+      "required": true,
+      "value": "hello-passport-auth"
+    },
+    "JWT_EXPIRATION": {
+      "description": "JWT duration time",
+      "required": false,
+      "value": "1d"
+    },
+    "JWT_ISSUER": {
+      "description": "JWT Issuer, for token validation",
+      "required": true,
+      "value": "hello-passport-auth"
+    },
+    "AUTH_TELEGRAM_TOKEN": {
+      "description": "Telegram Bot API token to the bot that's linked to your app's domain",
+      "required": true
+    }
+  }
+}
