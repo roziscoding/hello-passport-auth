@@ -43,8 +43,9 @@ export const app = expresso((app, config: AppConfig, environment) => {
     res.json(userRepository.getAll())
   })
 
-  app.get('*', (_req, res) => {
-    return res.redirect('/login')
+  app.get('*', (req, res, next) => {
+    if (req.path !== '/login') return res.redirect('/login')
+    next()
   })
 
   app.use(errors(environment))
