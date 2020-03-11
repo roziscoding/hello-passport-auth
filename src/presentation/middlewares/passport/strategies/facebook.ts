@@ -3,7 +3,7 @@ import { Strategy } from 'passport-facebook'
 import { AppConfig } from '../../../../app.config'
 import { UserRepository } from '../../../../data/repositories/UserRepository'
 
-export function configure (passport: PassportStatic, config: AppConfig['auth']['facebook'], repository: UserRepository) {
+export function configure (passport: PassportStatic, config: AppConfig[ 'auth' ][ 'facebook' ], repository: UserRepository) {
   passport.use(new Strategy({
     clientID: config.clientId,
     clientSecret: config.clientSecret,

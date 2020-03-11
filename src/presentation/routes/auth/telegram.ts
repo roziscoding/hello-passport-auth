@@ -7,10 +7,12 @@ export function factory (passport: PassportStatic) {
   return (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('telegram', { session: false }, (err, user, info: TelegramAuthData) => {
       if (err) return next(err)
-      if (user) return req.logIn(user as any, { session: false }, (err) => {
-        if (err) return next(err)
-        return res.redirect('/success')
-      })
+      if (user) {
+        return req.logIn(user, { session: false }, (err) => {
+          if (err) return next(err)
+          return res.redirect('/success')
+        })
+      }
 
       const newQuery = queryString.stringify({
         name: info.first_name,

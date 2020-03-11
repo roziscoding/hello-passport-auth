@@ -61,10 +61,13 @@
     })
       .then(response => response.json())
       .then(({ token }) => {
-        alert('Usuário criado com sucesso!')
+        console.log(localStorage.getItem('token'))
+        alert('Usuário criado com sucesso! Você será redirecionado...')
         localStorage.setItem('token', token)
-        e.target.setAttribute('disabled', false)
-        location.pathname = '/success'
+        setTimeout(() => {
+          e.target.setAttribute('disabled', false)
+          location.pathname = '/success'
+        }, 1000)
       })
       .catch(err => {
         console.error(err)

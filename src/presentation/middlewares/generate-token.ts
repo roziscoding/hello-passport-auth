@@ -4,7 +4,9 @@ import { Request, Response, NextFunction } from 'express'
 import { User } from '../../data/repositories/UserRepository'
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Express {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
     interface Request {
       token?: string
     }

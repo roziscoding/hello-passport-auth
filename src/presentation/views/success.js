@@ -6,22 +6,42 @@
     return
   }
 
-  const tokenDisplay = document.getElementById('tokenDisplay')
+  function setLogout () {
+    const logoutButton = document.getElementById('logout')
 
-  if (!tokenDisplay) {
-    alert('erro')
-    return
+    if (!logoutButton) return
+
+    logoutButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      localStorage.removeItem('token')
+      location.pathname = '/login'
+    })
   }
 
-  tokenDisplay.innerText = token
+  function displayToken () {
+    const tokenDisplay = document.getElementById('tokenDisplay')
 
-  const logoutButton = document.getElementById('logout')
+    if (!tokenDisplay) {
+      alert('erro')
+      return
+    }
 
-  if (!logoutButton) return
+    tokenDisplay.innerText = token
+  }
 
-  logoutButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    localStorage.removeItem('token')
-    location.pathname = '/login'
-  })
+  function displayUserInfo () {
+    const userInfoDisplay = document.getElementById('userInfo')
+
+    if (!userInfoDisplay) return
+
+    fetch('/me', { method: 'GET', headers: { 'Authorization': token, 'Content-Type': 'application/json' } })
+      .then(response => response.json())
+      .then(userInfo => {
+        userInfoDisplay.innerText = JSON.stringify(userInfo, null, 4)
+      })
+  }
+
+  setLogout()
+  displayToken()
+  displayUserInfo()
 })()

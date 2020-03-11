@@ -48,6 +48,8 @@ export const app = expresso((app, config: AppConfig, environment) => {
     res.json(userRepository.getAll())
   })
 
+  app.get('/me', routes.auth.getMe.factory(userRepository, jwt))
+
   app.get('*', (req, res, next) => {
     if (req.path !== '/login') return res.redirect('/login')
     next()
