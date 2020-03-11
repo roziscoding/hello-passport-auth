@@ -51,7 +51,7 @@
     if (missingField) return alert('Preencha todos os campos!')
 
     e.target.setAttribute('disabled', true)
-    fetch('http://local.lvh.me/sign-up', {
+    fetch('/sign-up', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -22,15 +22,20 @@ export const app = expresso((app, config: AppConfig, environment) => {
     })
   }
 
+  app.set('view engine', 'ejs')
+  app.set('views', path.join(__dirname, 'views'))
+
   const passport = middlewares.passport.factory(userRepository, crypto, config.auth)
   app.use(passport.initialize())
 
-  app.use(serveStatic(path.join(__dirname, 'views'), {
-    extensions: [ 'html' ],
-    setHeaders: (req) => {
-      req.setHeader('X-Frame-Options', 'None')
-    }
-  }))
+  app.get('/login', (_, res) => {
+    res.render('login', { botUsername: config.auth.telegram.botUsername, redirectUrl: config.auth.telegram.redirectUrl })
+  })
+
+  app.get('/sign-up', (_, res) => res.render('sign-up'))
+  app.get('/success', (_, res) => res.render('success'))
+
+  app.use(serveStatic(path.join(__dirname, 'views')))
 
   app.post('/sign-up', passport.authenticate('sign-up', { session: false }), generateToken, sendToken)
   app.post('/login', passport.authenticate('local', { session: false }), generateToken, sendToken)

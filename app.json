@@ -10,6 +10,11 @@
     "passport"
   ],
   "env": {
+    "PUBLIC_URL": {
+      "description": "Your app's public URL",
+      "required": true,
+      "value": "https://your-app-name.herokuapp.com"
+    },
     "AUTH_FACEBOOK_CLIENTID": {
       "description": "ClientID for your Facebook app",
       "required": true
@@ -17,11 +22,6 @@
     "AUTH_FACEBOOK_CLIENTSECRET": {
       "description": "ClientSecret for yout Facebook app",
       "required": true
-    },
-    "AUTH_FACEBOOK_CALLBACKURLBASE": {
-      "description": "The base for facebook's callback URL",
-      "required": true,
-      "value": "https://your-app-name.herokuapp.com"
     },
     "JWT_SECRET": {
       "description": "JWT Secret, for token signing",
@@ -44,6 +44,10 @@
     },
     "AUTH_TELEGRAM_TOKEN": {
       "description": "Telegram Bot API token to the bot that's linked to your app's domain",
+      "required": true
+    },
+    "AUTH_TELEGRAM_BOTUSERNAME": {
+      "description": "Username of the bot linked to your domain",
       "required": true
     }
   }

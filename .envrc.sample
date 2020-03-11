@@ -1,8 +1,12 @@
+export PUBLIC_URL=
+
 export JWT_SECRET=
 export JWT_ISSUER=
 export JWT_AUDIENCE=
+export JWT_EXPIRATION= # Optional. Defaults to 1d
+
 export AUTH_TELEGRAM_TOKEN=
+export AUTH_TELEGRAM_BOTUSERNAME=
+
 export AUTH_FACEBOOK_CLIENTID=
 export AUTH_FACEBOOK_CLIENTSECRET=
-export AUTH_FACEBOOK_CALLBACKURLBASE=
-export JWT_EXPIRATION= # Optional. Defaults to 1d
