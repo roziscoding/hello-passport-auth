@@ -10,7 +10,8 @@
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
     "build:clean": "npm run clean && npm run build",
     "lint": "eslint src/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "jumpstart": "npm run build:clean && npm start"
   },
   "author": "Rogério Munhoz <roz@rjmunhoz.me>",
   "license": "GPL-3.0",
