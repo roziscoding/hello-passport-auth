@@ -1,1 +1,1 @@
-web: npm run jumpstart
+web: npm start
