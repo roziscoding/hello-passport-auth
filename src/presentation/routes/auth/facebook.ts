@@ -2,6 +2,7 @@ import queryString from 'querystring'
 import { PassportStatic } from 'passport'
 import { Profile } from 'passport-facebook'
 import { Request, Response, NextFunction } from 'express'
+import { JWT } from '../../../lib/JWT'
 
 function normalize (name: string): string {
   const names = name.split(' ')
@@ -13,14 +14,16 @@ function normalize (name: string): string {
     .toLowerCase()
 }
 
-export function factory (passport: PassportStatic) {
+export function factory (passport: PassportStatic, jwt: JWT) {
   return (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('facebook', { session: false }, (err, user, profile: Profile) => {
       if (err) return next(err)
       if (user) {
         return req.logIn(user, { session: false }, (err) => {
           if (err) return next(err)
-          return res.redirect('/success')
+
+          const token = jwt.signUser(user)
+          res.redirect(`/success?token=${token}`)
         })
       }
 

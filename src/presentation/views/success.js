@@ -1,5 +1,10 @@
 (() => {
-  const token = localStorage.getItem('token')
+  const searchParams = new URLSearchParams(location.search)
+  if (searchParams.has('token')) {
+    history.replaceState({}, document.title, location.href.split('?')[0])
+  }
+
+  const token = searchParams.get('token') || localStorage.getItem('token')
 
   if (!token) {
     location.pathname = '/login'

@@ -35,14 +35,13 @@ export const app = expresso((app, config: AppConfig, environment) => {
   app.get('/sign-up', (_, res) => res.render('sign-up'))
   app.get('/success', (_, res) => res.render('success'))
 
-  app.use(serveStatic(path.join(__dirname, 'views')))
+  app.use(serveStatic(path.join(__dirname, 'views'), { cacheControl: false }))
 
   app.post('/sign-up', passport.authenticate('sign-up', { session: false }), generateToken, sendToken)
   app.post('/login', passport.authenticate('local', { session: false }), generateToken, sendToken)
 
-  app.get([ '/auth/facebook/callback', '/auth/facebook' ], routes.auth.facebook.factory(passport))
-
-  app.get('/auth/telegram/callback', routes.auth.telegram.factory(passport))
+  app.get([ '/auth/facebook/callback', '/auth/facebook' ], routes.auth.facebook.factory(passport, jwt))
+  app.get('/auth/telegram/callback', routes.auth.telegram.factory(passport, jwt))
 
   app.get('/users', (_req, res) => {
     res.json(userRepository.getAll())

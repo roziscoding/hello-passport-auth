@@ -2,15 +2,18 @@ import queryString from 'querystring'
 import { PassportStatic } from 'passport'
 import { TelegramAuthData } from '../../../lib/Telegram'
 import { Request, Response, NextFunction } from 'express'
+import { JWT } from '../../../lib/JWT'
 
-export function factory (passport: PassportStatic) {
+export function factory (passport: PassportStatic, jwt: JWT) {
   return (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('telegram', { session: false }, (err, user, info: TelegramAuthData) => {
       if (err) return next(err)
       if (user) {
         return req.logIn(user, { session: false }, (err) => {
           if (err) return next(err)
-          return res.redirect('/success')
+
+          const token = jwt.signUser(user)
+          return res.redirect(`/success?token=${token}`)
         })
       }
 
