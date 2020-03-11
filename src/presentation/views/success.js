@@ -1,7 +1,10 @@
 (() => {
   const searchParams = new URLSearchParams(location.search)
   if (searchParams.has('token')) {
-    history.replaceState({}, document.title, location.href.split('?')[0])
+    localStorage.setItem('token', searchParams.get('token'))
+    setTimeout(() => {
+      history.replaceState({}, document.title, location.href.split('?')[0])
+    }, 0)
   }
 
   const token = searchParams.get('token') || localStorage.getItem('token')
