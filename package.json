@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "start:debug": "tsnd src/index.ts",
-    "build": "tsc && mkdir -p dist/presentation/views && cp -r src/presentation/views dist/presentation/views",
+    "build": "tsc && cp -r src/presentation/views dist/presentation",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
     "build:clean": "npm run clean && npm run build",
     "lint": "eslint src/**/*.ts",
