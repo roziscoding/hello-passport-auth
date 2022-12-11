@@ -47,7 +47,7 @@
     "@expresso/ts-transformer-type-validator": "1.0.4",
     "@expresso/validator": "1.1.5",
     "bson-objectid": "1.3.0",
-    "ejs": "3.0.1",
+    "ejs": "3.1.7",
     "express-rescue": "1.1.26",
     "i": "0.3.7",
     "jsonwebtoken": "8.5.1",
